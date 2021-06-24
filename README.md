@@ -33,6 +33,8 @@ npm install --save react-lottie
 
 ## Usage
 
+##For Class Component:
+
 Import pinjump.json.json as animation data
 
 ```jsx
@@ -76,6 +78,55 @@ export default class LottieControl extends React.Component {
 }
 
 ```
+
+##For Function Component:
+
+Import pinjump.json.json as animation data
+
+```jsx
+import React from 'react'
+import Lottie from 'react-lottie';
+import * as animationData from './pinjump.json'
+
+const LottieControl = () => {
+
+  const [isStopped, setIsStopped] = React.useState(false);
+  const [isPaused, setIsPaused] = React.useState(false);
+ 
+
+  
+  const buttonStyle = {
+    display: 'block',
+    margin: '10px auto'
+  };
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true, 
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+    return (
+      <div>
+        <Lottie options={defaultOptions}
+              height={400}
+              width={400}
+              isStopped={isStopped}
+              isPaused={isPaused}/>
+        <button style={buttonStyle} onClick={() => setIsStopped(true)}>stop</button>
+        <button style={buttonStyle} onClick={() => setIsStopped(false)}>play</button>
+        <button style={buttonStyle} onClick={() => setIsPaused(!isPaused)}>pause</button>
+      </div>
+     (
+}
+
+export default LottieControl;
+
+```
+
 
 ### props
 The `<Lottie />` Component supports the following components:
